@@ -76,6 +76,13 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
             playSoundsVC.recordedAudioURL = recordedAudioURL
         }
     }
+    
+    func configureUI(isRecording: Bool) {
+            stopRecordingButton.isEnabled = isRecording // to disable the button
+            recordButton.isEnabled = !isRecording // to enable the button
+            recordingLabel.text = !isRecording ? "Tap to Record" : "Recording in Progress"
+
+        }
 
 }
 
