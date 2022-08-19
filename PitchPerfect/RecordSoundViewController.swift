@@ -25,9 +25,7 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func recordAudio(_ sender: Any) {
-        recordingLabel.text = "Recording in Progress"
-        stopRecordingButton.isEnabled = true
-        recordButton.isEnabled = false
+        configureUI(isRecording: true)
         recordButton.alpha = 0.5
         stopRecordingButton.alpha = 1.0
         
@@ -49,11 +47,9 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func stopRecording(_ sender: Any) {
-        recordButton.isEnabled = true
-        stopRecordingButton.isEnabled = false
+        configureUI(isRecording: false)
         recordButton.alpha = 1.0
         stopRecordingButton.alpha = 0.5
-        recordingLabel.text = "Tap to Record"
         
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
